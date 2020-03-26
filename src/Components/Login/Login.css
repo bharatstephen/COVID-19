@@ -9,6 +9,12 @@
         width: 50%;
     }
 }
+
+@media screen and (max-width:450px){
+    .login{
+        width: 80%;
+    }
+}
 .header_login {
     margin: 0 auto;
     width: 50%;

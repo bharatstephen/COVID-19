@@ -4,12 +4,25 @@
         border-radius: 5px;
         box-shadow: 1px 0px 8px #aba5a5fa;
     }
+    .btn{
+        width : 49%;
+    }
 
     @media screen and (max-width:768px){
         .header{
             width: 60%;
         }
     }
+
+    @media screen and (max-width:450px){
+        .header{
+            width: 90%;
+        }
+        .btn{
+            width : 40%;
+        }
+    }
+
 
     @media screen and (min-width:768px) and (max-width:844px){
         .header{

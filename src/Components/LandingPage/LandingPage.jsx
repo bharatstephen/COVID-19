@@ -30,9 +30,9 @@ class LandingPage extends Component {
         return (
             <div>
                 <div className="header">
-                    <button class="btn btn-Default" onClick={ this.displayLogin }  style={{ width : '49%'}}>Login</button>
+                    <button class="btn btn-Default" onClick={ this.displayLogin } >Login</button>
                     <span>|</span>
-                    <button class="btn btn-Default" onClick={ this.displaySignup } style={{  width : '50%'}}>Signup</button>
+                    <button class="btn btn-Default" onClick={ this.displaySignup } >Signup</button>
                 </div>
                 {
                     reducer.showLogin &&
