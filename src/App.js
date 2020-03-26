@@ -1,34 +1,25 @@
 import React, { Component } from "react";
 import "./App.css";
-import { connect } from "react-redux";
+import { BrowserRouter as Router, Switch} from 'react-router-dom';
+import Route from 'react-router-dom/Route';
+import Dashboard from './Components/Dashboard/Dashboard';
+import LandingPage from './Components/LandingPage/LandingPage'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="Age-label">
-          your age: <span>{this.props.age}</span>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route path="/" exact component = { LandingPage }/>
+            <Route path="/dashboard" exact component = { Dashboard }/>
+            <Route path="*" exact component = { LandingPage }/>
+          </Switch>
         </div>
-        <button onClick={this.props.onAgeUp}>Age UP</button>
-        <button onClick={this.props.onAgeDown}>Age Down</button>
-      </div>
+      </Router>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    age: state.age
-  };
-};
 
-const mapDispachToProps = dispatch => {
-  return {
-    onAgeUp: () => dispatch({ type: "AGE_UP", value: 1 }),
-    onAgeDown: () => dispatch({ type: "AGE_DOWN", value: 1 })
-  };
-};
-export default connect(
-  mapStateToProps,
-  mapDispachToProps
-)(App);
+export default App;

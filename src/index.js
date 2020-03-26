@@ -3,17 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
 import { Provider } from "react-redux";
 import { getStore } from './store'
-import Dashboard from './Components/Dashboard/Dashboard';
 
 const store = getStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <Dashboard />
-  </Provider>,
+    <App />
+    </Provider>,
   document.getElementById("root")
 );
 

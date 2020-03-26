@@ -1,0 +1,18 @@
+    .header{
+        width: 45%;
+        margin: 3% auto 0 auto;
+        border-radius: 5px;
+        box-shadow: 1px 0px 8px #aba5a5fa;
+    }
+
+    @media screen and (max-width:768px){
+        .header{
+            width: 60%;
+        }
+    }
+
+    @media screen and (min-width:768px) and (max-width:844px){
+        .header{
+            width: 50%;
+        }
+    }

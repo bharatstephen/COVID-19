@@ -4,7 +4,7 @@ import Footer from '../Footer/Footer';
 import LeftNav from '../LeftNav/LeftNav';
 import Main from '../Main/Main';
 import { connect } from 'react-redux';
-import { FETCH_OVERALL_DATA,FETCH_COUNTRYWISE_DATA, FETCH_DATA_LOADING } from '../../Actions/Actions'
+import { FETCH_OVERALL_DATA,FETCH_COUNTRYWISE_DATA, FETCH_DATA_LOADING, ON_LOGOUT } from '../../Actions/Actions'
 
 
 class Dashboard extends Component {
@@ -12,30 +12,42 @@ class Dashboard extends Component {
         super()
     }
 
-componentDidMount(){
-    this.props.getData();
-    // this.props.fetchDataLoading();
-}
+    componentDidMount() {
+        if(sessionStorage.getItem('Token')){
+            this.props.history.push('/dashboard')
+        }
+        else{
+            this.props.history.push('/')
+        }
+        // this.props.getData();
+        window.addEventListener('popstate', function (event){
+            window.history.pushState(null, document.title,  window.location.href);
+        });
+    }
+        onLogout=()=>{
+            this.props.logout(this.props.history)
+        }
 
     render() {
-        console.log(this.props.reducer.total_cases,'total_cases')
         return (
             <div className='Dashboard'>
-                <Header/>
-                <LeftNav/>
+                <Header
+                onLogout= {this.onLogout}
+                spinner= { this.props.reducer.spinner }
+                />
+                {/* <LeftNav/>
                 <Main 
                 countryWiseData = { this.props.reducer.countryWiseData }
                 overAllData = { this.props.reducer.overAllData }
                 countryCount = { this.props.reducer.countryCount }
                 />
-                <Footer/>
+                <Footer/> */}
             </div>
         )
     }
 }
 
 export const mapStateToProps = (state)=>{
-    console.log(state,'state')
     return{
         reducer:state
     }
@@ -44,15 +56,13 @@ export const mapStateToProps = (state)=>{
 
 export const mapDispatchToProps = (dispatch)=>{
     return{
-        getData:()=>{
-            console.log('dis')
-        dispatch({type:FETCH_COUNTRYWISE_DATA})
-        dispatch({type:FETCH_OVERALL_DATA})
-        },
-        // fetchDataLoading:()=>{
-        //     console.log('fetchDataLoading')
-        // dispatch({type:FETCH_DATA_LOADING })
-        // }
+        // getData:()=>{
+        // dispatch({type:FETCH_COUNTRYWISE_DATA})
+        // dispatch({type:FETCH_OVERALL_DATA})
+        // },
+        logout:(history)=>{
+        dispatch({type:ON_LOGOUT, history:history })
+        }
     }
         
 }

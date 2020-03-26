@@ -43,7 +43,7 @@ export default class Sidebar extends Component {
                 </li>
               </ul>
             </li>
-            {/* <li className="nav-item">
+            <li className="nav-item">
               <a href="pages/widgets.html" className="nav-link">
                 <i className="nav-icon fas fa-th" />
                 <p>
@@ -537,7 +537,7 @@ export default class Sidebar extends Component {
                 <i className="nav-icon far fa-circle text-info" />
                 <p>Informational</p>
               </a>
-            </li> */}
+            </li>
           </ul>
         </nav>
         {/* /.sidebar-menu */}
