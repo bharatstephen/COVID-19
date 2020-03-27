@@ -4,8 +4,8 @@ import Footer from '../Footer/Footer';
 import LeftNav from '../LeftNav/LeftNav';
 import Main from '../Main/Main';
 import { connect } from 'react-redux';
-import { FETCH_OVERALL_DATA,FETCH_COUNTRYWISE_DATA, FETCH_DATA_LOADING, ON_LOGOUT } from '../../Actions/Actions'
-
+import { FETCH_OVERALL_DATA,FETCH_COUNTRYWISE_DATA, SIDEBAR_TOGGLE, ON_LOGOUT } from '../../Actions/Actions'
+import './Dashboard.css';
 
 class Dashboard extends Component {
     constructor(props){
@@ -19,7 +19,7 @@ class Dashboard extends Component {
         else{
             this.props.history.push('/')
         }
-        // this.props.getData();
+        this.props.getData();
         window.addEventListener('popstate', function (event){
             window.history.pushState(null, document.title,  window.location.href);
         });
@@ -31,23 +31,25 @@ class Dashboard extends Component {
     render() {
         return (
             <div className='Dashboard'>
-                <Header
-                onLogout= {this.onLogout}
-                spinner= { this.props.reducer.spinner }
+                <div className='wrapper'>
+                <LeftNav
+                toggleSideBar = { this.props.reducer.toggleSideBar }
                 />
-                {/* <LeftNav/>
                 <Main 
                 countryWiseData = { this.props.reducer.countryWiseData }
                 overAllData = { this.props.reducer.overAllData }
                 countryCount = { this.props.reducer.countryCount }
+                toggleSideBar = { this.props.toggleSideBar }
                 />
-                <Footer/> */}
+                </div>
+                <Footer/>
             </div>
         )
     }
 }
 
 export const mapStateToProps = (state)=>{
+    console.log(state,'state')
     return{
         reducer:state
     }
@@ -56,13 +58,17 @@ export const mapStateToProps = (state)=>{
 
 export const mapDispatchToProps = (dispatch)=>{
     return{
-        // getData:()=>{
-        // dispatch({type:FETCH_COUNTRYWISE_DATA})
-        // dispatch({type:FETCH_OVERALL_DATA})
-        // },
+        getData:()=>{
+        dispatch({type:FETCH_COUNTRYWISE_DATA})
+        dispatch({type:FETCH_OVERALL_DATA})
+        },
         logout:(history)=>{
         dispatch({type:ON_LOGOUT, history:history })
-        }
+        },
+        toggleSideBar:()=>{
+            console.log('dispatch')
+            dispatch({type:SIDEBAR_TOGGLE })
+            }
     }
         
 }

@@ -1,14 +1,14 @@
 import { FETCH_COUNTRYWISE_DATA_SUCCESS, LOGOUT, 
   FETCH_OVERALL_DATA_SUCCESS, SEND_LOGIN_DATA_SUCCESS , FETCH_DATA_LOADING, SET_USERNAME, SET_PASSWORD, 
   SEND_REGISTRATION_DATA_SUCCESS, SEND_REGISTRATION_DATA_FAILURE, DISPLAY_LOGIN_PAGE, 
-  DISPLAY_SIGNIN_PAGE, ON_LOGOUT_SUCCESS, SEND_LOGIN_DATA_FAILURE, ON_USER_LOGIN, SEND_REGISTRATION_DATA, ON_LOGOUT,ON_LOGOUT_FAILURE
+  DISPLAY_SIGNIN_PAGE, ON_LOGOUT_SUCCESS, SEND_LOGIN_DATA_FAILURE, SIDEBAR_TOGGLE, ON_USER_LOGIN, SEND_REGISTRATION_DATA, ON_LOGOUT,ON_LOGOUT_FAILURE
 } from '../Actions/Actions';
 
 export const initialState = {
-// countryWiseData:[],
-// overAllData:{},
+countryWiseData:[],
+overAllData:{},
+countryCount:undefined,
 spinner:false,
-// countryCount:undefined,
 isLoggedIn:false,
 userName:'',
 password:'',
@@ -18,7 +18,8 @@ errorMessageRegistration:undefined,
 showLogin:true,
 showSignup:false,
 loginFailure:false,
-errorMessageLogin:undefined
+errorMessageLogin:undefined,
+toggleSideBar:false
 };
 
 export default function reducer (state = initialState, action) {
@@ -29,17 +30,17 @@ export default function reducer (state = initialState, action) {
       ...state,
       spinner:true
     }
-    // case FETCH_COUNTRYWISE_DATA_SUCCESS:
-    //   return{
-    //     ...state,
-    //     countryWiseData : action.data.countries_stat,
-    //     countryCount : action.data.countries_stat.length
-    //   }
-    //   case FETCH_OVERALL_DATA_SUCCESS:
-    //   return{
-    //     ...state,
-    //     overAllData : action.data
-    //   }
+    case FETCH_COUNTRYWISE_DATA_SUCCESS:
+      return{
+        ...state,
+        countryWiseData : action.data.countries_stat,
+        countryCount : action.data.countries_stat.length
+      }
+      case FETCH_OVERALL_DATA_SUCCESS:
+      return{
+        ...state,
+        overAllData : action.data
+      }
       case SET_USERNAME:
       return{
         ...state,
@@ -113,6 +114,11 @@ export default function reducer (state = initialState, action) {
         loginFailure:true,
         errorMessageLogin:action.errorData,
         spinner:false
+      }
+      case SIDEBAR_TOGGLE:
+      return{
+        ...state,
+        toggleSideBar:!state.toggleSideBar        
       }
     default:
     return state;

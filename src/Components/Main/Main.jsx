@@ -1,297 +1,204 @@
-// import React, { Component } from 'react'
+import React, { Component } from 'react'
+import LeftNav from '../LeftNav/LeftNav';
+import './Main.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUsers } from '@fortawesome/fontawesome-free-solid'
 
-// export default class Menu extends Component {
-// constructor(props){
-//   super()
-//   this.state = {
-//     search:''
-//   }
-// }
+export default class Menu extends Component {
+constructor(props){
+  super()
+  this.state = {
+    search:''
+  }
+}
   
 
-//   filterList=(e)=>{
-//     this.setState({
-//       search:e.target.value
-//     })
-//   }
+  filterList=(e)=>{
+    this.setState({
+      search:e.target.value
+    })
+  }
 
-//   showAllCountries=()=>{
-//     this.setState({
-//       search:''
-//     })
-//   }
+  showAllCountries=()=>{
+    this.setState({
+      search:''
+    })
+  }
 
+  toggleSideBar=()=>{
+      this.props.toggleSideBar();
+  }
 
-//     render() {
-//       let updateList = this.props.countryWiseData.map((country)=> country );
-//       updateList = updateList.filter(item => {
-//       return item.country_name.toLowerCase().search(
-//         this.state.search.toLowerCase()
-//         ) !== -1;
-//       });
+    render() {
+      let updateList = this.props.countryWiseData.map((country)=> country );
+      updateList = updateList.filter(item => {
+      return item.country_name.toLowerCase().search(
+        this.state.search.toLowerCase()
+        ) !== -1;
+      });
 
-//       const { total_cases, total_deaths,total_recovered } = this.props.overAllData
-// return (
-//   <div>
-//     <div className="content-wrapper">
-//       {/* Content Header (Page header) */}
-//       <div className="content-header">
-//         <div className="container-fluid">
-//           <div className="row mb-2">
-//             <div className="col-sm-6">
-//               <h1 className="m-0 text-dark">COVID -19 Live Report</h1>
-//             </div>{/* /.col */}
-//             <div className="col-sm-6">
-//               <ol className="breadcrumb float-sm-right">
-//                 <li className="breadcrumb-item"><a href="fakeURL">Home</a></li>
-//                 {/* <li className="breadcrumb-item active">Dashboard v2</li> */}
-//               </ol>
-//             </div>{/* /.col */}
-//           </div>{/* /.row */}
-//         </div>{/* /.container-fluid */}
-//       </div>
-//       {/* /.content-header */}
-//       {/* Main content */}
-//       <section className="content">
-//         <div className="container-fluid">
-//           {/* Info boxes */}
-//           <div className="row">
-//             <div className="col-12 col-sm-6 col-md-3">
-//               <div className="info-box">
-//                 <span className="info-box-icon bg-info elevation-1"><i className="fas fa-users" /></span>
-//                 <div className="info-box-content">
-//                   <span className="info-box-text">CoronaVirus Cases</span>
-//                   <span className="info-box-number">
-//                     { total_cases }
-//                   </span>
-//                 </div>
-//                 {/* /.info-box-content */}
-//               </div>
-//               {/* /.info-box */}
-//             </div>
-//             {/* /.col */}
-//             <div className="col-12 col-sm-6 col-md-3">
-//               <div className="info-box mb-3">
-//                 <span className="info-box-icon bg-danger elevation-1"><i className="fas fa-users" /></span>
-//                 <div className="info-box-content">
-//                   <span className="info-box-text">Deaths</span>
-//                   <span className="info-box-number">{total_deaths}</span>
-//                 </div>
-//                 {/* /.info-box-content */}
-//               </div>
-//               {/* /.info-box */}
-//             </div>
-//             {/* /.col */}
-//             {/* fix for small devices only */}
-//             <div className="clearfix hidden-md-up" />
-//             <div className="col-12 col-sm-6 col-md-3">
-//               <div className="info-box mb-3">
-//                 <span className="info-box-icon bg-success elevation-1"><i className="fas fa-users" /></span>
-//                 <div className="info-box-content">
-//                   <span className="info-box-text">Recovered</span>
-//                   <span className="info-box-number">{total_recovered}</span>
-//                 </div>
-//                 {/* /.info-box-content */}
-//               </div>
-//               {/* /.info-box */}
-//             </div>
-//             {/* /.col */}
-//             <div className="col-12 col-sm-6 col-md-3">
-//               <div className="info-box mb-3">
-//                 <span className="info-box-icon bg-warning elevation-1"><i className="fas fa-users" /></span>
-//                 <div className="info-box-content">
-//                   <span className="info-box-text">Affected Countries</span>
-//                   <span className="info-box-number">{this.props.countryCount}</span>
-//                 </div>
-//                 {/* /.info-box-content */}
-//               </div>
-//               {/* /.info-box */}
-//             </div>
-//             {/* /.col */}
-//           </div>
-//           <div className="row">
-//             {/* Left col */}
-//             <div className="col-md-12">
-//               {/* /.card */}
-//               {/* TABLE: LATEST ORDERS */}
-//               <div className="card">
-//                 <div className="card-header border-transparent">
-//                   <h3 className="card-title"><b>Confirmed Cases Country Wise</b></h3>
-//                   <form action="#" method="post" style={{ width: '40%', display: 'inline-block', marginLeft: '20%' }}>
-//                         <div className="input-group">
-//                           <input type="text" name="message" style={{borderRight: 'none'}} onChange = {this.filterList} placeholder="Search for Country..." className="form-control" />
-//                           <div className="input-group-append">
-//                             <button className="btn btn-navbar" type="submit" style={{ border:'1px solid #0000002b', borderLeft: 'none' }}>
-//                               <i className="fas fa-search" />
-//                             </button>
-//                         </div>
-//                         </div>
-//                   </form>
-//                   <div className="card-tools" style={ { position: 'absolute', right: '14px', top: '0px'}}>
-//                     <button type="button" className="btn btn-tool" data-card-widget="collapse">
-//                       <i className="fas fa-minus" />
-//                     </button>
-//                   </div>
-//                 </div>
-//                 {/* /.card-header */}
-//                 { this.props.spinner && 
-//                 <div>Loading</div> 
-//                 }
-//                 {! this.props.spinner &&
-//                 <div className="card-body p-0">
-//                   <div className="table-responsive">
-//                     <table className="table m-0">
-//                       <thead>
-//                         <tr>
-//                           <th>Country</th>
-//                           <th>Confirmed</th>
-//                           <th>Recovered</th>
-//                           <th>Death</th>
-//                           <th>Active Cases</th>
-                    
-//                         </tr>
-//                       </thead>
-//                       <tbody>
-//                         {
-//                           updateList.slice(0, 10).map((data)=>{
-//                         return <tr>
-//                           <td><a>{data.country_name}</a></td>
-//                           <td> <span className="badge badge-primary">{data.cases}</span></td>
-//                           <td><span className="badge badge-success">{data.total_recovered}</span></td>
-//                           <td>
-//                             <div className="badge badge-danger" data-color="#00a65a" data-height={20}>{data.deaths}</div>
-//                           </td>
-//                           <td>
-//                             <div className="badge badge-warning" data-color="#00a65a" data-height={20}>{data.active_cases}</div>
-//                           </td>
-//                         </tr>
-//                           })
-//                         }
-//                       </tbody>
-//                     </table>
-//                   </div>
-//                   {/* /.table-responsive */}
-//                 </div>
-//                 }
-//               </div>
-//               {/* /.card */}
-//               <div className="row">
-//               <div className="col-md-6">
-//               {/* Info Boxes Style 2 */}
-//               <div className="info-box mb-3 bg-warning">
-//                 <span className="info-box-icon"><i className="fas fa-tag" /></span>
-//                 <div className="info-box-content">
-//                   <span className="info-box-text">Inventory</span>
-//                   <span className="info-box-number">5,200</span>
-//                 </div>
-//                 {/* /.info-box-content */}
-//               </div>
-//               {/* /.info-box */}
-//               <div className="info-box mb-3 bg-success">
-//                 <span className="info-box-icon"><i className="far fa-heart" /></span>
-//                 <div className="info-box-content">
-//                   <span className="info-box-text">Mentions</span>
-//                   <span className="info-box-number">92,050</span>
-//                 </div>
-//                 {/* /.info-box-content */}
-//               </div>
-//               {/* /.info-box */}
-//               <div className="info-box mb-3 bg-danger">
-//                 <span className="info-box-icon"><i className="fas fa-cloud-download-alt" /></span>
-//                 <div className="info-box-content">
-//                   <span className="info-box-text">Downloads</span>
-//                   <span className="info-box-number">114,381</span>
-//                 </div>
-//                 {/* /.info-box-content */}
-//               </div>
-//               {/* /.info-box */}
-//               <div className="info-box mb-3 bg-info">
-//                 <span className="info-box-icon"><i className="far fa-comment" /></span>
-//                 <div className="info-box-content">
-//                   <span className="info-box-text">Direct Messages</span>
-//                   <span className="info-box-number">163,921</span>
-//                 </div>
-//                 {/* /.info-box-content */}
-//               </div>
-//             </div>
-//                 <div className="col-md-6">
-//                   {/* USERS LIST */}
-//                   <div className="card">
-//                     <div className="card-header">
-//                       <h3 className="card-title">Latest Members</h3>
-//                       <div className="card-tools">
-//                         <span className="badge badge-danger">8 New Members</span>
-//                         <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-minus" />
-//                         </button>
-//                         <button type="button" className="btn btn-tool" data-card-widget="remove"><i className="fas fa-times" />
-//                         </button>
-//                       </div>
-//                     </div>
-//                     {/* /.card-header */}
-//                     <div className="card-body p-0">
-//                       <ul className="users-list clearfix">
-//                         <li>
-//                           <img src="dist/img/user1-128x128.jpg" alt="user" />
-//                           <a className="users-list-name" href="fakeURL">Alexander Pierce</a>
-//                           <span className="users-list-date">Today</span>
-//                         </li>
-//                         <li>
-//                           <img src="dist/img/user8-128x128.jpg" alt="user" />
-//                           <a className="users-list-name" href="fakeURL">Norman</a>
-//                           <span className="users-list-date">Yesterday</span>
-//                         </li>
-//                         <li>
-//                           <img src="dist/img/user7-128x128.jpg" alt="user" />
-//                           <a className="users-list-name" href="fakeURL">Jane</a>
-//                           <span className="users-list-date">12 Jan</span>
-//                         </li>
-//                         <li>
-//                           <img src="dist/img/user6-128x128.jpg" alt="user" />
-//                           <a className="users-list-name" href="fakeURL">John</a>
-//                           <span className="users-list-date">12 Jan</span>
-//                         </li>
-//                         <li>
-//                           <img src="dist/img/user2-160x160.jpg" alt="user" />
-//                           <a className="users-list-name" href="fakeURL">Alexander</a>
-//                           <span className="users-list-date">13 Jan</span>
-//                         </li>
-//                         <li>
-//                           <img src="dist/img/user5-128x128.jpg" alt="user" />
-//                           <a className="users-list-name" href="fakeURL">Sarah</a>
-//                           <span className="users-list-date">14 Jan</span>
-//                         </li>
-//                         <li>
-//                           <img src="dist/img/user4-128x128.jpg" alt="user" />
-//                           <a className="users-list-name" href="fakeURL">Nora</a>
-//                           <span className="users-list-date">15 Jan</span>
-//                         </li>
-//                         <li>
-//                           <img src="dist/img/user3-128x128.jpg" alt="user" />
-//                           <a className="users-list-name" href="fakeURL">Nadia</a>
-//                           <span className="users-list-date">15 Jan</span>
-//                         </li>
-//                       </ul>
-//                       {/* /.users-list */}
-//                     </div>
-//                     {/* /.card-body */}
-//                     <div className="card-footer text-center">
-//                       <a href="javascript::">View All Users</a>
-//                     </div>
-//                     {/* /.card-footer */}
-//                   </div>
-//                   {/*/.card */}
-//                 </div>
-//                 {/* /.col */}
-//               </div>
-//               {/* /.row */}
-//             </div>
-//           </div>
-//           {/* /.row */}
-//         </div>
-//       </section>
-//     </div>
-//   </div>
-//   )
-//     }
-// }
+      const { total_cases, total_deaths,total_recovered } = this.props.overAllData
+		return (
+  	  <>
+        <div className="main">          
+        	<nav class="navbar navbar-dark bg-dark">
+        		<button class="navbar-toggler" type="button" onClick={ this.toggleSideBar } data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      				<span class="navbar-toggler-icon"></span>
+    			</button>
+    		</nav>
+    			<main className="content">
+				<div className="container-fluid">
+					<div class="main_header">
+						<h1 class="header-title">
+							COVID-19 Twitter Data
+						</h1>
+					</div>
+				<div class="row row_gap">
+					<div class="col-xl-6 col-xxl-5 d-flex">
+						<div class="w-100">
+							<div class="row">
+								<div class="col-sm-4 container_card">
+									<div class="card">
+										<div class="card-body">
+											<div class="row">
+												<div class="col mt-0">
+													<h5 class="card-title">CORONA VIRUS CASES</h5>
+												</div>
+
+												<div class="col-auto">
+													<div class="avatar">
+														<div class="avatar-title rounded-circle bg-primary-dark">
+														<FontAwesomeIcon icon={faUsers} />															{/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg> */}
+														</div>
+													</div>
+												</div>
+											</div>
+											<h1 class="display-5 mt-1 mb-3">2.562</h1>
+										</div>
+									</div>
+									
+								</div>
+								<div class="col-sm-4 container_card">
+									<div class="card">
+										<div class="card-body">
+											<div class="row">
+												<div class="col mt-0">
+													<h5 class="card-title">DEATH</h5>
+												</div>
+												<div class="col-auto">
+													<div class="avatar">
+														<div class="avatar-title rounded-circle bg-primary-dark">
+														<FontAwesomeIcon icon={faUsers} />															{/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg> */}
+														</div>
+													</div>
+												</div>
+											</div>
+											<h1 class="display-5 mt-1 mb-3">$24.300</h1>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-4 container_card">
+									<div class="card">
+										<div class="card-body">
+											<div class="row">
+												<div class="col mt-0">
+													<h5 class="card-title">RECOVERED</h5>
+												</div>
+
+												<div class="col-auto">
+													<div class="avatar">
+														<div class="avatar-title rounded-circle bg-primary-dark">
+														<FontAwesomeIcon icon={faUsers} />															{/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg> */}
+														</div>
+													</div>
+												</div>
+											</div>
+											<h1 class="display-5 mt-1 mb-3">$24.300</h1>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className='row'>
+				<div class="col-xl-6 col-xxl-7 tweet_data">
+						<div class="card flex-fill w-100">
+							<div class="card-header">
+								<h5 class="card-title mb-0">Tweets</h5>
+							</div>
+							<div class="card-body py-3">
+								<div class="twitter_tweets d-flex">
+									<div class="twitter_tweets__content">
+										<div class="twitter_tweets__meta text-mutes">
+										<span class="badge badge-success" style={{ float:"right"}}>Posted on <span class="text-mutes">- 3/26/2020</span>
+											</span>												
+										</div>
+										<p class="m-0 my-1 mb-2 text-muted">#Italy vs #US #COVID19 #COVID2019 cases and deaths: updated: https://t.co/HEp8PBj50Z</p>
+										<div class="blog-comments__actions">
+											<div class="btn-group-sm btn-group">
+												<button type="button" class="btn btn-danger">Report Spam</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-body py-3">
+								<div class="twitter_tweets d-flex">
+									<div class="twitter_tweets__content">
+										<div class="twitter_tweets__meta text-mutes">
+										<span class="badge badge-success" style={{ float:"right"}}>Posted on <span class="text-mutes">- 3/26/2020</span>
+											</span>												
+										</div>
+										<p class="m-0 my-1 mb-2 text-muted">#Italy vs #US #COVID19 #COVID2019 cases and deaths: updated: https://t.co/HEp8PBj50Z</p>
+										<div class="blog-comments__actions">
+											<div class="btn-group-sm btn-group">
+												<button type="button" class="btn btn-danger">Report Spam</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-body py-3">
+								<div class="twitter_tweets d-flex">
+									<div class="twitter_tweets__content">
+										<div class="twitter_tweets__meta text-mutes">
+										<span class="badge badge-success" style={{ float:"right"}}>Posted on <span class="text-mutes">- 3/26/2020</span>
+											</span>												
+										</div>
+										<p class="m-0 my-1 mb-2 text-muted">#Italy vs #US #COVID19 #COVID2019 cases and deaths: updated: https://t.co/HEp8PBj50Z</p>
+										<div class="blog-comments__actions">
+											<div class="btn-group-sm btn-group">
+												<button type="button" class="btn btn-danger">Report Spam</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-body py-3">
+								<div class="twitter_tweets d-flex">
+									<div class="twitter_tweets__content">
+										<div class="twitter_tweets__meta text-mutes">
+										<span class="badge badge-success" style={{ float:"right"}}>Posted on <span class="text-mutes">- 3/26/2020</span>
+											</span>												
+										</div>
+										<p class="m-0 my-1 mb-2 text-muted">#Italy vs #US #COVID19 #COVID2019 cases and deaths: updated: https://t.co/HEp8PBj50Z</p>
+										<div class="blog-comments__actions">
+											<div class="btn-group-sm btn-group">
+												<button type="button" class="btn btn-danger">Report Spam</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+      	</main>
+    	</div>
+	 	</>
+	)
+ }
+}
 

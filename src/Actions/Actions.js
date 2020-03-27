@@ -26,3 +26,5 @@ export const ON_USER_LOGIN = 'onUserLogin';
 export const SEND_LOGIN_DATA_SUCCESS = 'sendLoginDataSuccess';
 export const SEND_LOGIN_DATA_FAILURE = 'sendLoginDataFailure';
 export const SEND_LOGIN_DATA_LOADING = 'sendLoginDataLoading';
+
+export const SIDEBAR_TOGGLE = 'sideBarToggle';
