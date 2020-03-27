@@ -138,3 +138,19 @@ h1.header-title {
 .tweet_data{
     margin-bottom: 7%;
 }
+
+.logout{
+    /* border: none;
+    padding: 6px;
+    background-color: #0a0a0a;
+    border-radius: 7px;
+    width: 50%;
+    border-radius: 6px;
+    color: white;
+    margin-bottom: 5%; */
+    outline: none;
+}
+
+button[type="submit"]:disabled{
+    cursor: wait;
+}

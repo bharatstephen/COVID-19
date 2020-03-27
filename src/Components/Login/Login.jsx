@@ -53,6 +53,7 @@ class Login extends Component {
         }
         return (
             <div class={`login ${this.className} `} >
+                <div className="login_wrapper">
                 <div class="header_login">
                     Login
                 </div>
@@ -63,7 +64,7 @@ class Login extends Component {
                 }
                 <div class="Container_input">
                     <div class="input_username">
-                        <input type="text" class="username" onChange={ this.onChangeUsername } placeholder="Email Id"/>
+                        <input type="text" class="name" onChange={ this.onChangeUsername } placeholder="Email Id"/>
                         <p className='inputError'>{this.state.errors["userName"]}</p>
                     </div>
                     <div class="input_password">
@@ -71,7 +72,10 @@ class Login extends Component {
                         <p className='inputError' >{this.state.errors["password"]}</p>
                     </div>
                 </div>
-                    <button type="submit" onClick={ this.onLogin } disabled={ this.props.spinner } class="submit_login">{this.props.spinner ? 'Logging In...' : 'Login' }</button>
+                    <button type="submit" onClick={ this.onLogin } disabled={ this.props.spinner } class="btn btn-Default submit_login">{this.props.spinner ? 'Logging In...' : 'Login' }</button>
+                    <button class="btn btn-Default login_page_signup-btn" onClick={ this.props.displaySignup } >Create Account</button>
+
+               </div>
                </div>
         )
     }

@@ -67,6 +67,7 @@ export default class Signup extends Component {
         }
         return (
             <div className={`signup ${this.className} `}>
+            <div className="login_wrapper">
                 <div className="header_signup">
                 Create Account
                 </div>
@@ -97,7 +98,10 @@ export default class Signup extends Component {
 
                     </div>
                 </div>
-                    <button type="submit" className="submit_signup" disabled={ this.props.spinner } onClick={ this.submitSignupDetails } >{this.props.spinner ? 'Signing Up...' : 'Sign Up' }</button>
+                    <button type="submit" className=" btn btn-Default submit_signup" disabled={ this.props.spinner } onClick={ this.submitSignupDetails } >{this.props.spinner ? 'Signing Up...' : 'Sign Up' }</button>
+                    <button class="btn btn-Default signup_page_login-btn" onClick={ this.props.displayLogin } >Back To Login</button>
+
+             </div>
              </div>
         );
     }

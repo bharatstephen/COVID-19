@@ -40,6 +40,8 @@ class Dashboard extends Component {
                 overAllData = { this.props.reducer.overAllData }
                 countryCount = { this.props.reducer.countryCount }
                 toggleSideBar = { this.props.toggleSideBar }
+                onLogout = { this.onLogout}
+                spinner = { this.props.reducer.spinner }
                 />
                 </div>
                 <Footer/>

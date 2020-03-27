@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import LeftNav from '../LeftNav/LeftNav';
 import './Main.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUsers } from '@fortawesome/fontawesome-free-solid'
@@ -29,6 +28,10 @@ constructor(props){
       this.props.toggleSideBar();
   }
 
+  logout=()=>{
+    this.props.onLogout();
+  }
+
     render() {
       let updateList = this.props.countryWiseData.map((country)=> country );
       updateList = updateList.filter(item => {
@@ -45,6 +48,9 @@ constructor(props){
         		<button class="navbar-toggler" type="button" onClick={ this.toggleSideBar } data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
       				<span class="navbar-toggler-icon"></span>
     			</button>
+				<button className="btn btn-light logout" type="submit" disabled={ this.props.spinner } onClick={this.logout}>
+               Logout
+              </button>
     		</nav>
     			<main className="content">
 				<div className="container-fluid">

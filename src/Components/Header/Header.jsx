@@ -32,7 +32,7 @@ export default class Header extends Component {
                 </div>
               </form> */}
               <button className="logout" type="submit" disabled={ this.props.spinner } onClick={this.logout} style={{ marginLeft: '72%'}}>
-              {this.props.spinner ? 'Logging Out...' : 'Logout' }
+              {/* {this.props.spinner ? 'Logging Out...' : 'Logout' } */} Logout
               </button>
               {/* Right navbar links */}
             </nav>

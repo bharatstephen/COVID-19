@@ -28,12 +28,13 @@ class LandingPage extends Component {
     render() {
         const { reducer } = this.props;
         return (
-            <div>
-                <div className="header">
-                    <button class="btn btn-Default" onClick={ this.displayLogin } >Login</button>
-                    <span>|</span>
-                    <button class="btn btn-Default" onClick={ this.displaySignup } >Signup</button>
-                </div>
+            <div className="landingpage">
+            <div class="LandingPage_header">
+						<h1 class="header-title">
+							COVID-19 Twitter Data
+						</h1>
+					</div>
+                
                 {
                     reducer.showLogin &&
                     <Login
@@ -46,6 +47,7 @@ class LandingPage extends Component {
                         setPassword = { this.props.setPassword }
                         onUserLogin = { this.props.onUserLogin }
                         spinner = { reducer.spinner }
+                        displaySignup = { this.displaySignup }
                     />
                 }
                 {

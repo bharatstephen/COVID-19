@@ -1,19 +1,25 @@
 .signup{
-    width: 35%;
-    margin: 4% auto 0 auto;
+    margin: 9% auto 0 auto;
+    z-index: 1;
     border-radius: 5px;
-    box-shadow: 1px 0px 15px #aba5a5fa
 }
-@media screen and (max-width:768px){
-    .signup{
-        width: 50%;
+
+@media (max-width: 576px){
+    .signup {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
     }
 }
 
-@media screen and (max-width:450){
-    .signup{
-        width: 80%;
-    }
+.signup_page_login-btn{
+    margin-top: 38px;
+    width: 100%;
+    background-color: black;
+    color:white;
+    outline:none;
 }
 
 .header_signup {
