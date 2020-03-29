@@ -41,11 +41,22 @@
     text-align: initial;
 }
 
-.sidebar-link, a.sidebar-link:hover {
-    background-color: #28354e;
+.sidebar-user:hover,.sidebar-link, a.sidebar-link:hover {
+    background-color: #28354ee3;
+    color: white;
+    border-radius: 0;
 }
 .sidebar-user{
     border-bottom-left-radius: 9px;
     border-bottom-right-radius: 9px;
     background-color: gainsboro;
+    cursor: pointer;
+}
+.active{
+    box-shadow: inset 0.1875rem 0 0 #28304e;
+    background-color: #afb5ee;
+    color: #28304e;
+}
+.user-avatar{
+    max-width: 2.5rem;
 }

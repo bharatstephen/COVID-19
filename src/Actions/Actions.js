@@ -1,6 +1,4 @@
-export const FETCH_COUNTRYWISE_DATA = 'fetchCountryWiseData';
 export const FETCH_OVERALL_DATA = 'fetchOverAllData';
-export const FETCH_COUNTRYWISE_DATA_SUCCESS = 'fetchCountryWiseDataSuccess';
 export const FETCH_OVERALL_DATA_SUCCESS = 'fetchOverAllDataSuccess';
 export const SET_DATA = 'setData';
 export const FETCH_DATA_LOADING = 'fetchDataLoading';
@@ -28,3 +26,18 @@ export const SEND_LOGIN_DATA_FAILURE = 'sendLoginDataFailure';
 export const SEND_LOGIN_DATA_LOADING = 'sendLoginDataLoading';
 
 export const SIDEBAR_TOGGLE = 'sideBarToggle';
+
+export const FETCH_TWEET_DATA = 'fetchTweetData';
+export const FETCH_TWEET_DATA_CATEGORY_WISE = 'fetchTweetDataByCategory';
+export const FETCH_TWEET_DATA_SUCCESS = 'fetchTweetDataSuccess';
+
+export const REPORT_SPAM = 'reportSpam';
+export const REPORT_SPAM_SUCCESS = 'reportSpamSuccess';
+export const REPORT_SPAM_FAILED = 'reportSpamFailed';
+
+export const FETCH_CATEGORIES = 'fetchCategories';
+export const FETCH_CATEGORIES_SUCCESS = 'fetchCategoriesSuccess';
+export const SET_CATEGORY= 'setCategory';
+
+export const SKIP_LOGIN = 'skipLogin';
+
