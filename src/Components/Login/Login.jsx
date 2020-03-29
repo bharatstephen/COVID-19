@@ -30,7 +30,7 @@ class Login extends Component {
 
         if(!userName){
             formIsValid = false
-            errors['userName'] = 'UserName Cannot be empty';
+            errors['userName'] = 'Username Cannot be empty';
         }
 
         if(!password){
